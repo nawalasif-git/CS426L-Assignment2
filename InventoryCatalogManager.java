@@ -77,7 +77,11 @@ private String generateProductId(int operation, int worker) {
             });
         }
         pool.shutdown();
-        pool.awaitTermination(1, TimeUnit.HOURS);
+
+      if (!pool.awaitTermination(1, TimeUnit.HOURS)) {
+         pool.shutdownNow();
+         pool.awaitTermination(1, TimeUnit.MINUTES);
+        }
         long endTime = System.nanoTime();
         double seconds = (endTime - startTime) / 1_000_000_000.0;
         double throughput = completedOperations.get() / seconds;
