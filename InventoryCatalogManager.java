@@ -76,6 +76,7 @@ private String generateProductId(int operation, int worker) {
         double throughput = completedOperations.get() / seconds;
 
         System.out.println("\nCollection: " + mapName);
+        System.out.println("Products in Catalog: " + PRODUCTS);
         System.out.println("Worker Threads: " + THREADS);
         System.out.println("Completed Operations: "
                 + completedOperations.get());
