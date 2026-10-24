@@ -26,4 +26,31 @@ public static double traverseColumnMajor() {
 
     return sum;
 }
+public static void main(String[] args) {
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            matrix[i][j] = i + j;
+        }
+    }
+
+    double rowSum = 0;
+    double columnSum = 0;
+
+    long rowStart = System.nanoTime();
+
+    for (int i = 0; i < ITERATIONS; i++) {
+        rowSum = traverseRowMajor();
+    }
+
+    long rowEnd = System.nanoTime();
+
+    long columnStart = System.nanoTime();
+
+    for (int i = 0; i < ITERATIONS; i++) {
+        columnSum = traverseColumnMajor();
+    }
+
+    long columnEnd = System.nanoTime();
+}
 }
