@@ -25,6 +25,10 @@ private void initializeInventory() {
         inventory.put("P" + i, 100);
     }
 }
+private void resetInventory() {
+    inventory.clear();
+    initializeInventory();
+}
     public void benchmarkSynchronizedMap() throws InterruptedException {
         inventory = Collections.synchronizedMap(new HashMap<>());
 
