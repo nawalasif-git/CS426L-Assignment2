@@ -16,12 +16,15 @@ public class InventoryCatalogManager {
     private Map<String, Integer> inventory;
 
     public InventoryCatalogManager() {
-        inventory = new HashMap<>();
+    inventory = new HashMap<>();
+    initializeInventory();
+}
 
-        for (int i = 0; i < PRODUCTS; i++) {
-            inventory.put("P" + i, 100);
-        }
+private void initializeInventory() {
+    for (int i = 0; i < PRODUCTS; i++) {
+        inventory.put("P" + i, 100);
     }
+}
     public void benchmarkSynchronizedMap() throws InterruptedException {
         inventory = Collections.synchronizedMap(new HashMap<>());
 
