@@ -13,6 +13,13 @@ public class InventoryCatalogManager {
     private static final int OPERATIONS = 50000;
     private static final int PRODUCTS = 1000;
 
+    private static void validateConfiguration() {
+    if (THREADS <= 0 || OPERATIONS <= 0 || PRODUCTS <= 0) {
+        throw new IllegalStateException(
+                "Threads, operations, and products must be positive.");
+    }
+}
+
     private Map<String, Integer> inventory;
 
     public InventoryCatalogManager() {
