@@ -29,6 +29,9 @@ private void resetInventory() {
     inventory.clear();
     initializeInventory();
 }
+private String generateProductId(int operation, int worker) {
+    return "P" + ((operation + worker) % PRODUCTS);
+}
     public void benchmarkSynchronizedMap() throws InterruptedException {
         inventory = Collections.synchronizedMap(new HashMap<>());
 
@@ -55,8 +58,7 @@ private void resetInventory() {
             final int worker = t;
             pool.execute(() -> {
                 for (int i = 0; i < OPERATIONS / THREADS; i++) {
-                    String productId =
-                            "P" + ((i + worker) % PRODUCTS);
+                    String productId = generateProductId(i, worker);
 
                     Integer stock = inventory.get(productId);
 
