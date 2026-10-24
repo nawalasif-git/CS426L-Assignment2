@@ -98,6 +98,7 @@ private String generateProductId(int operation, int worker) {
     public static void main(String[] args) throws InterruptedException {
         InventoryCatalogManager manager = new InventoryCatalogManager();
         System.out.println("INVENTORY CATALOG CONCURRENCY BENCHMARK");
+        System.out.println("Comparing synchronized and concurrent inventory maps.");
         manager.benchmarkSynchronizedMap();
         manager.benchmarkConcurrentMap();
     }
