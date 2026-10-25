@@ -24,5 +24,18 @@ public class ParallelRiskCalculator extends RecursiveTask<Double> {
         }
     }
 
+        int middle = (start + end) / 2;
+
+        ParallelRiskCalculator task1 =
+                new ParallelRiskCalculator(risks, start, middle, threshold);
+        ParallelRiskCalculator task2 =
+                new ParallelRiskCalculator(risks, middle, end, threshold);
+
+        task1.fork();
+        double result2 = task2.compute();
+        double result1 = task1.join();
+
+        return result1 + result2;
+
 }
 
