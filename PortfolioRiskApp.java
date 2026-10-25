@@ -14,6 +14,12 @@ public class PortfolioRiskApp {
 ForkJoinPool pool = new ForkJoinPool();
 pool.invoke(task);
 pool.shutdown();
+System.out.println("Portfolio Risk After 5% Adjustment:");
+
+for (int i = 0; i < risks.length; i++) {
+    System.out.printf("%.4f ", risks[i]);
+}
+System.out.println();
     }
 }
 
